@@ -1,3 +1,3 @@
 # DataControls
 
-Manage forms, reports, infoviews, etc from a single point
+CMS modules for managing forms, reports, infoviews, etc from a single point
