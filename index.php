@@ -27,9 +27,9 @@ function pageContentArea() {
 
 $toolBar = [
         "refreshUI"=>["icon"=>"<i class='fa fa-refresh'></i>","tips"=>"Recache"],
-        //"createDC"=>["icon"=>"<i class='fa fa-plus'></i>","tips"=>"Create"],
-        //"cloneDC"=>["icon"=>"<i class='fa fa-plus'></i>","tips"=>"Clone"],
-        //"exportDC"=>["icon"=>"<i class='fa fa-plus'></i>","tips"=>"Export"],
+        "createDC"=>["icon"=>"<i class='fa fa-plus'></i>","tips"=>"Create"],
+        // "cloneDC"=>["icon"=>"<i class='fa fa-copy'></i>","tips"=>"Clone"],
+        // "exportDC"=>["icon"=>"<i class='fa fa-download'></i>","tips"=>"Export"],
         ['type'=>"bar"],
         //"trashDC"=>["icon"=>"<i class='fa fa-trash'></i>","tips"=>"Delete"],
         
@@ -56,6 +56,9 @@ printPageComponent(false,[
 <style>
 .list-group-item {
     cursor: pointer;
+}
+.overlayBox .modal-body {
+    padding: 0px;
 }
 </style>
 <script>
@@ -149,11 +152,19 @@ function getRowActions(ctrl) {
 
 function createDC(btn) {
     dcMode = "<?=$_REQUEST['panel']?>";
-    //alert(dcMode);
+    
+    var lx = _link("modules/logiksGenerators/"+dcMode);
+    lgksOverlayFrame(lx, "Generate "+toTitle(dcMode), {});
 }
 function editDC(btn) {
     fpath = $(btn).closest("tr").data("fpath");
     name = $(btn).closest("tr").find("td.name").text();
     parent.openLinkFrame("<?=strtoupper($_REQUEST['panel'])?>:"+name,_link("modules/datacontrolsEditor/<?=$_REQUEST['panel']?>")+"&fpath="+fpath);
+}
+function cloneDC(btn) {
+    
+}
+function exportDC(btn) {
+    
 }
 </script>
